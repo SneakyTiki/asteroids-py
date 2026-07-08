@@ -28,15 +28,18 @@ def main():
             if event.type == pygame.QUIT:
                 return
         screen.fill("black")
+        player.update(dt)
+
         player.draw(screen)
 
+        #refresh screen
         pygame.display.flip()
         
         #limiting the game refresh rate to 60 fps
         #For myself; the clock object class has a method called tick, which takes in a float as an optional parameter to limit the framerate
         #I read the documentation, but honestly only vaguely understand how it works. It forces a delay before the next refresh
         dt = clock.tick(60.0) / 1000
-        #print(f"the delta time it {dt}")
+        #print(f"the delta time is {dt}")
         
 
 if __name__ == "__main__":
