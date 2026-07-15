@@ -9,6 +9,9 @@ def main():
     pygame.init()
     print(f"Starting Asteroids with pygame version: {pygame.version.ver}")
     #pygame.display.set_mode(size=(100, 100), flags= pygame.OPENGL | pygame.RESIZABLE, depth=8, display=0, vsync=0) -> Surface
+    updatable = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
+    Player.containers = (updatable, drawable)
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     player = Player(SCREEN_WIDTH/2, SCREEN_HEIGHT/2)
     print(f"Screen width: {SCREEN_WIDTH}")
@@ -28,9 +31,13 @@ def main():
             if event.type == pygame.QUIT:
                 return
         screen.fill("black")
-        player.update(dt)
+        
+        #used to be player.update(dt), switched to group
+        updatable.update(dt)
 
-        player.draw(screen)
+        #used to be player.draw(screen), switched to group
+        for object in drawable:
+            object.draw(screen)
 
         #refresh screen
         pygame.display.flip()
