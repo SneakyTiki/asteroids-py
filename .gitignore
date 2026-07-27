@@ -2,3 +2,4 @@ __pycache__
 .venv
 logger.py
 game_state.jsonl
+game_events.jsonl
