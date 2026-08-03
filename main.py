@@ -53,7 +53,7 @@ def main():
             for shot in shots:
                 if shot.collides_with(object):
                     log_event("asteroid_shot")
-                    object.kill()
+                    object.split()
                     shot.kill()
 
         #used to be player.draw(screen), switched to group
